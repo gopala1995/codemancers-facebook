@@ -1,0 +1,18 @@
+.gif{
+    border: 1px solid black;
+    width:230px;
+    height: 200px;
+    overflow-y: scroll;
+    margin-top: -50px;
+    position: absolute;
+    z-index: 2;
+    background-color: white;
+}
+.f{
+    /* border: 5px solid red; */
+    width:200px;
+}
+.i{
+    width:100%;
+    
+}
