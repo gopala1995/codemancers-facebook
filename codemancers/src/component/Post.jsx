@@ -2,20 +2,20 @@ import "./style/Post.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import GifBoxIcon from '@mui/icons-material/GifBox';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import VideoCallIcon from '@mui/icons-material/VideoCall';
-import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LockIcon from '@mui/icons-material/Lock';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import VideoCallIcon from '@mui/icons-material/VideoCall';
+import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import GifBoxIcon from '@mui/icons-material/GifBox';
 import { useState } from "react";
 import { Gif } from '../component/Gif';
 
 export const Post = () => {
   const [state,setState] = useState(0);
-  const [gif,setGifs] = useState("")
+  const [gif,setGifs] = useState([])
   const [post,setPost] = useState([])
   const [check, setCheck] = useState(false)
   const handle=(value)=>{
@@ -24,7 +24,8 @@ export const Post = () => {
     setGifs(value)
   }
 
-  const Handelpost =()=>{
+  const Handelpost =(e)=>{
+    e.preventdefault = 1
     setCheck(true)
     
     console.log(post);
@@ -73,10 +74,15 @@ export const Post = () => {
       </Button>
       </div>
       {
-        state?<Gif handle={handle}/>:""
+        state? <Gif handle={handle}/>:""
       }
       <div>
-        {check? {...post}:null}
+        {check? post: ""}
+      </div>
+      <div>
+        {check? <div>
+          <img src={gif} alt="" className="d"/>
+        </div> : ""}
       </div>
     </div>
   );
